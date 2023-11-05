@@ -8,6 +8,7 @@ import {
    Typography,
 } from "@material-tailwind/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 
@@ -24,7 +25,11 @@ const ProfileMenu = () => {
    };
 
    return (
-      <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
+      <Menu
+         allowHover={true}
+         open={isMenuOpen}
+         handler={setIsMenuOpen}
+         placement="bottom-end">
          <MenuHandler>
             <Button
                variant="text"
@@ -42,9 +47,11 @@ const ProfileMenu = () => {
             </Button>
          </MenuHandler>
          <MenuList className="p-1">
+            <p className="px-2 font-bold py-2 text-black">Robin Rana</p>
+            <hr />
             <MenuItem>
                <Typography as="span" variant="small" className="font-normal">
-                  My Profile
+                  <Link to="/my-assignments">My Assignments</Link>
                </Typography>
             </MenuItem>
             <MenuItem className="hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10">

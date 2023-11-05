@@ -1,7 +1,7 @@
 const Slider = ({ title, bgImage }) => {
    return (
       <div
-         className="text-center h-[100vh] flex flex-col items-center justify-center"
+         className="text-center h-[90vh] flex flex-col items-center justify-center"
          style={{
             background: `linear-gradient(rgba(45,55,60,0.7) 100%,rgba(45,55,60,0.7) 100%), url(${bgImage})`,
             backgroundPosition: "center top",

@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import Slider from "../../Components/Slider/Slider";
+import Slider from "../../../Components/Slider/Slider";
 
 const Banner = () => {
    return (
-      <div>
+      <div className="relative">
          <Swiper
             pagination={{
                dynamicBullets: true,
@@ -22,13 +22,13 @@ const Banner = () => {
             </SwiperSlide>
             <SwiperSlide>
                <Slider
-                  title="Unlock Your Potential with Group Study!"
+                  title="Elevate Your Group Assignments!"
                   bgImage="https://i.ibb.co/VW8WXdK/banner-1.png"
                />
             </SwiperSlide>
             <SwiperSlide>
                <Slider
-                  title="Unlock Your Potential with Group Study!"
+                  title="Join Forces, Ace Your Assignments"
                   bgImage="https://i.ibb.co/VW8WXdK/banner-1.png"
                />
             </SwiperSlide>
