@@ -1,31 +1,24 @@
-import { Typography } from "@material-tailwind/react";
-import NavListMenu from "./NavListMenu";
-// nav list component
-const navListItems = [
-   {
-      label: "Account",
-   },
-   {
-      label: "Blocks",
-   },
-   {
-      label: "Docs",
-   },
-];
+import { NavLink } from "react-router-dom";
+import "./style.css";
 
 const NavList = () => {
    return (
-      <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-         <NavListMenu />
-         {navListItems.map(({ label }) => (
-            <Typography
-               key={label}
-               as="a"
-               href="#"
-               variant="small"
-               color="gray"
-               className="font-medium text-blue-gray-500"></Typography>
-         ))}
+      <ul className="flex items-center gap-7">
+         <li>
+            <NavLink to="/">Home</NavLink>
+         </li>
+         <li>
+            <NavLink to="/about">About</NavLink>
+         </li>
+         <li>
+            <NavLink to="/contact">Contact</NavLink>
+         </li>
+         <li>
+            <NavLink to="/contact">Contact</NavLink>
+         </li>
+         <li>
+            <NavLink to="/contact">Contact</NavLink>
+         </li>
       </ul>
    );
 };
