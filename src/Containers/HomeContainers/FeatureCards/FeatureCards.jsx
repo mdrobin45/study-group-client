@@ -17,7 +17,11 @@ const FeatureCards = () => {
             text="Assignment Submission"
             bgColor="#1EC1D9"
          />
-         <FeatureCard icon={icon3} text="Peer Grading" bgColor="#307AD5" />
+         <FeatureCard
+            icon={icon3}
+            text="Assignment Grading"
+            bgColor="#307AD5"
+         />
          <FeatureCard
             icon={icon4}
             text="Feedback and Ratings"

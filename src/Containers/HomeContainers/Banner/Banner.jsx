@@ -1,13 +1,12 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Slider from "../../../Components/Slider/Slider";
 
 const Banner = () => {
    return (
-      <div className="relative">
+      <div className="relative pb-40">
          <Swiper
             pagination={{
                dynamicBullets: true,
