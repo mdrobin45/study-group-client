@@ -10,7 +10,6 @@ import {
    updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import { clearToken, generateToken } from "../Api/Api";
 import auth from "../Configuration/firebase.config";
 
 export const AuthContext = createContext(null);
@@ -67,17 +66,6 @@ const AuthContextProvider = ({ children }) => {
       const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
          setUser(currentUser);
          setIsLoading(false);
-         if (currentUser) {
-            const { displayName, email } = currentUser;
-
-            // Server token request
-            generateToken({
-               name: displayName,
-               email: email,
-            });
-         } else {
-            clearToken().then((res) => console.log(res));
-         }
       });
       return () => {
          unSubscribe();
