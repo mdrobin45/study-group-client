@@ -66,7 +66,7 @@ const RegisterForm = () => {
                </span>
             </div>
             <p className="text-red-500 pb-3">{errorMessage}</p>
-            <FormSubmit btnText="Sign Up" />
+            <FormSubmit isSubmit={true} btnText="Sign Up" />
             <GoogleSignIn />
          </form>
          <AuthFormFooter registerPage={true} />

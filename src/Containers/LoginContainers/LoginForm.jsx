@@ -59,7 +59,7 @@ const LoginForm = () => {
                      </Link>
                   </div>
                </div>
-               <FormSubmit btnText="Sign In" />
+               <FormSubmit isSubmit={true} btnText="Sign In" />
                <GoogleSignIn />
             </form>
             <AuthFormFooter loginPage={true} />

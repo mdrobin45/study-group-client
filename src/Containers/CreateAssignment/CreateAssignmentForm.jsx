@@ -1,53 +1,28 @@
 import { Option, Select } from "@material-tailwind/react";
 import moment from "moment/moment";
-import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FormSubmit from "../../Components/InputFields/FormSubmit";
 import NumberField from "../../Components/InputFields/NumberField";
 import TextField from "../../Components/InputFields/TextField";
 import PageHeader from "../../Components/PageHeader/PageHeader";
-import useAuth from "../../Hooks/useAuth";
+import useCreateAssignment from "../../Hooks/useCreateAssignment";
 import "./style.css";
 
-// Assignment Data fields
-const initialFields = {
-   title: "",
-   description: "",
-   thumbnail: "",
-   totalMarks: "",
-   difficultyLevel: "",
-   dueDate: "",
-};
 const CreateAssignmentForm = () => {
-   const { user } = useAuth();
-   const [selectedDate, setSelectedDate] = useState(new Date());
-   const [assignmentData, setAssignmentData] = useState(initialFields);
-
-   // changeHandler
-   const onChangeHandler = (e) => {
-      const { name, value } = e.target;
-      setAssignmentData((prevData) => ({ ...prevData, [name]: value }));
-   };
-
-   // Set user email in assignment data
-   useEffect(() => {
-      setAssignmentData((prevData) => ({
-         ...prevData,
-         userEmail: user && user.email,
-      }));
-   }, [user]);
-
-   // Handle form submission
-   const handleFormSubmit = (e) => {
-      e.preventDefault();
-      console.log(assignmentData);
-   };
+   const {
+      handleFormSubmit,
+      onChangeHandler,
+      setSelectedDate,
+      selectedDate,
+      setAssignmentData,
+      assignmentData,
+      isPending,
+   } = useCreateAssignment();
 
    return (
       <div>
          <PageHeader title="Create Assignment" />
-
          <form
             onSubmit={handleFormSubmit}
             className="w-2/4 mx-auto my-20 p-4 border shadow-md rounded-md">
@@ -78,6 +53,7 @@ const CreateAssignmentForm = () => {
                      Due Date
                   </label>
                   <DatePicker
+                     value={assignmentData.dueDate}
                      className="bg-gray-50 border-gray-300 border-2 text-gray-900 text-sm rounded-lg focus:border-secondary focus:outline-none block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      dateFormat="dd/MMM/yyyy"
                      selected={selectedDate}
@@ -95,6 +71,7 @@ const CreateAssignmentForm = () => {
                      Difficulty Level
                   </label>
                   <Select
+                     value={assignmentData.difficultyLevel}
                      onChange={(value) =>
                         setAssignmentData((prevData) => ({
                            ...prevData,
@@ -117,10 +94,15 @@ const CreateAssignmentForm = () => {
                   onChange={onChangeHandler}
                   className="bg-gray-50 border-gray-300 border-2 text-gray-900 text-sm rounded-lg focus:border-secondary focus:outline-none block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   name="description"
+                  value={assignmentData.description}
                   rows="4"
                   id="description"></textarea>
             </div>
-            <FormSubmit btnText="Submit" />
+            <FormSubmit
+               clickHandler={handleFormSubmit}
+               pending={isPending}
+               btnText="Submit"
+            />
          </form>
       </div>
    );
