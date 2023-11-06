@@ -5,6 +5,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import SingleAssignment from "../Pages/SingleAssignment/SingleAssignment";
+import SubmittedAssignments from "../Pages/SubmittedAssignments/SubmittedAssignments";
 import UpdateAssignment from "../Pages/UpdateAssignment/UpdateAssignment";
 import Root from "../Root/Root";
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
          {
             path: "/assignments",
             element: <Assignments />,
+         },
+         {
+            path: "/submitted-assignments",
+            element: <SubmittedAssignments />,
          },
          {
             path: "/assignments/:id",
