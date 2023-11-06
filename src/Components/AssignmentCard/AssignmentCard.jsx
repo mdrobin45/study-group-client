@@ -64,7 +64,7 @@ const AssignmentCard = ({ assignmentData }) => {
          </CardBody>
          <CardFooter className="pt-0 justify-between flex">
             <ButtonLink btnText="View Details" to={`/assignments/${_id}`} />
-            <ButtonLink btnText="Update" to={`/update/id`} />
+            <ButtonLink btnText="Update" to={`/update/${_id}`} />
          </CardFooter>
       </Card>
    );

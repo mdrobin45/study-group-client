@@ -33,3 +33,12 @@ export const submitSolution = async (submissionData) => {
    );
    return response;
 };
+
+// Update assignment
+export const updateAssignment = async (submissionData, id) => {
+   const { data: response } = await axios.put(
+      `${import.meta.env.VITE_SERVER_API}/assignments/${id}`,
+      submissionData
+   );
+   return response;
+};
