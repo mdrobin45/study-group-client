@@ -16,3 +16,11 @@ export const getAllAssignments = async () => {
    );
    return response;
 };
+
+// Get single assignment
+export const getSingleAssignment = async (id) => {
+   const { data: response } = await axios(
+      `${import.meta.env.VITE_SERVER_API}/assignments/${id}`
+   );
+   return response;
+};

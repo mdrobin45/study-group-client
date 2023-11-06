@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllAssignments } from "../API/serverRequest";
 
-const useAssignments = () => {
+const useAssignments = (id) => {
    const { isPending, data } = useQuery({
       queryKey: ["assignments"],
       queryFn: getAllAssignments,
@@ -9,8 +9,10 @@ const useAssignments = () => {
 
    // Reverse array for getting latest first
    const assignments = data ? data.toReversed() : [];
-   console.log(assignments);
-   return { assignments, isPending };
+   return {
+      assignments,
+      isPending,
+   };
 };
 
 export default useAssignments;
