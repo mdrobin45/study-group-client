@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Assignments from "../Pages/Assignments/Assignments";
 import CreateAssignment from "../Pages/CreateAssignment/CreateAssignment";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
          {
             path: "/create-assignment",
             element: <CreateAssignment />,
+         },
+         {
+            path: "/assignments",
+            element: <Assignments />,
          },
       ],
    },
