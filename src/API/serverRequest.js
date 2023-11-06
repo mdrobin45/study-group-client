@@ -24,3 +24,12 @@ export const getSingleAssignment = async (id) => {
    );
    return response;
 };
+
+// Submit assignment solution
+export const submitSolution = async (submissionData) => {
+   const { data: response } = await axios.post(
+      `${import.meta.env.VITE_SERVER_API}/submittedAssignment`,
+      submissionData
+   );
+   return response;
+};

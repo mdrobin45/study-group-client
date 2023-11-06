@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllAssignments } from "../API/serverRequest";
 
-const useAssignments = (id) => {
+const useAssignments = () => {
    const { isPending, data } = useQuery({
       queryKey: ["assignments"],
       queryFn: getAllAssignments,

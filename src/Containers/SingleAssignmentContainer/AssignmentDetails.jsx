@@ -7,21 +7,22 @@ import {
    Chip,
    Typography,
 } from "@material-tailwind/react";
-import { useQuery } from "@tanstack/react-query";
 import { AiFillTrophy, AiOutlineCalendar } from "react-icons/ai";
 import { IoExtensionPuzzleSharp } from "react-icons/io5";
-import { useParams } from "react-router-dom";
-import { getSingleAssignment } from "../../API/serverRequest";
+import useSolutionSubmit from "../../Hooks/useSolutionSubmit";
+import TakeAssignmentForm from "./TakeAssignmentForm";
 
 const AssignmentDetails = () => {
-   const { id } = useParams();
-   // const { pendingAssignment, singleAssignment } = useAssignments(id);
+   const {
+      handleSubmitData,
+      submissionChangeHandler,
+      singleAssignment,
+      pendingAssignment,
+      submissionData,
+      handleModal,
+      openModal,
+   } = useSolutionSubmit();
 
-   // Get single assignment
-   const { isPending: pendingAssignment, data: singleAssignment } = useQuery({
-      queryKey: ["assignment"],
-      queryFn: () => getSingleAssignment(id),
-   });
    return (
       <>
          {!pendingAssignment ? (
@@ -82,11 +83,19 @@ const AssignmentDetails = () => {
                </CardBody>
                <CardFooter className="pt-3">
                   <Button
+                     onClick={handleModal}
                      className="bg-secondary tracking-wider text-sm font-normal"
                      size="lg"
                      fullWidth={true}>
                      Take Assignment
                   </Button>
+                  <TakeAssignmentForm
+                     handleSubmit={handleSubmitData}
+                     changeData={submissionData}
+                     changeHandler={submissionChangeHandler}
+                     open={openModal}
+                     handleOpen={handleModal}
+                  />
                </CardFooter>
             </Card>
          ) : (
