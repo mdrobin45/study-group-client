@@ -19,9 +19,27 @@ export const getAllAssignments = async () => {
    return response;
 };
 
+// Get User assignments
+export const getUserAssignments = async (email) => {
+   const { data: response } = await axios.get(
+      `${import.meta.env.VITE_SERVER_API}/assignments/user?email=${email}`,
+      { withCredentials: true }
+   );
+   return response;
+};
+
 // Get single assignment
 export const getSingleAssignment = async (id, email) => {
    const { data: response } = await axios.get(
+      `${import.meta.env.VITE_SERVER_API}/assignments/${id}?email=${email}`,
+      { withCredentials: true }
+   );
+   return response;
+};
+
+// Get single assignment
+export const deleteAssignment = async (id, email) => {
+   const { data: response } = await axios.delete(
       `${import.meta.env.VITE_SERVER_API}/assignments/${id}?email=${email}`,
       { withCredentials: true }
    );

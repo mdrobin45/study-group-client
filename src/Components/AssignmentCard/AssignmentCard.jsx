@@ -1,4 +1,5 @@
 import {
+   Button,
    Card,
    CardBody,
    CardFooter,
@@ -8,6 +9,8 @@ import {
 } from "@material-tailwind/react";
 import { AiFillTrophy, AiOutlineCalendar } from "react-icons/ai";
 import { IoExtensionPuzzleSharp } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
+import useDeleteAssignment from "../../Hooks/useDeleteAssignment";
 import ButtonLink from "../Buttons/ButtonLink";
 
 const AssignmentCard = ({ assignmentData }) => {
@@ -17,8 +20,12 @@ const AssignmentCard = ({ assignmentData }) => {
       title,
       totalMarks,
       dueDate,
+      userEmail,
       difficultyLevel: level,
    } = assignmentData;
+
+   const { deleteHandler } = useDeleteAssignment();
+   const { pathname } = useLocation();
    return (
       <Card className="w-96 border pt-4">
          <CardHeader color="blue-gray" className="relative h-56 mt-0">
@@ -63,7 +70,18 @@ const AssignmentCard = ({ assignmentData }) => {
             </div>
          </CardBody>
          <CardFooter className="pt-0 justify-between flex">
-            <ButtonLink btnText="View Details" to={`/assignments/${_id}`} />
+            {pathname === "/posted-assignment" ? (
+               <Button
+                  onClick={() => {
+                     deleteHandler({ email: userEmail, id: _id });
+                  }}
+                  className="bg-red-500 tracking-wider text-sm font-normal">
+                  Delete
+               </Button>
+            ) : (
+               <ButtonLink btnText="View Details" to={`/assignments/${_id}`} />
+            )}
+
             <ButtonLink btnText="Update" to={`/update/${_id}`} />
          </CardFooter>
       </Card>

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getSingleAssignment, updateAssignment } from "../API/serverRequest";
 import { validateAssignmentFields } from "../Utils/assignmentFieldValidator";
 import { showToast } from "../Utils/toast";
+import useAuth from "./useAuth";
 
 // Assignment Data fields
 const initialFields = {
@@ -17,7 +18,7 @@ const initialFields = {
 
 const useUpdateAssignment = () => {
    const { id } = useParams();
-   // const { user } = useAuth();
+   const { user } = useAuth();
    const navigate = useNavigate();
    const [selectedDate, setSelectedDate] = useState(new Date());
    const [assignmentData, setAssignmentData] = useState(initialFields);
@@ -31,7 +32,7 @@ const useUpdateAssignment = () => {
    // Get single assignment
    const { data } = useQuery({
       queryKey: ["assignment"],
-      queryFn: () => getSingleAssignment(id),
+      queryFn: () => getSingleAssignment(id, user?.email),
    });
    useEffect(() => {
       setAssignmentData((prevData) => ({

@@ -4,6 +4,7 @@ import CreateAssignment from "../Pages/CreateAssignment/CreateAssignment";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import MyAssignments from "../Pages/MyAssignments/MyAssignments";
+import PostedAssignment from "../Pages/PostedAssignment/PostedAssignment";
 import Register from "../Pages/Register/Register";
 import SingleAssignment from "../Pages/SingleAssignment/SingleAssignment";
 import SubmittedAssignments from "../Pages/SubmittedAssignments/SubmittedAssignments";
@@ -65,10 +66,18 @@ const router = createBrowserRouter([
             ),
          },
          {
-            path: "/my-assignments",
+            path: "/my-submission",
             element: (
                <PrivateRoute>
                   <MyAssignments />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "/posted-assignment",
+            element: (
+               <PrivateRoute>
+                  <PostedAssignment />
                </PrivateRoute>
             ),
          },
