@@ -3,6 +3,7 @@ import Assignments from "../Pages/Assignments/Assignments";
 import CreateAssignment from "../Pages/CreateAssignment/CreateAssignment";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import MyAssignments from "../Pages/MyAssignments/MyAssignments";
 import Register from "../Pages/Register/Register";
 import SingleAssignment from "../Pages/SingleAssignment/SingleAssignment";
 import SubmittedAssignments from "../Pages/SubmittedAssignments/SubmittedAssignments";
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
          {
             path: "/assignments/:id",
             element: <SingleAssignment />,
+         },
+         {
+            path: "/my-assignments",
+            element: <MyAssignments />,
          },
       ],
    },

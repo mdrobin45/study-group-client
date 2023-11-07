@@ -4,16 +4,23 @@ import { assignmentMarking } from "../API/serverRequest";
 import { showToast } from "../Utils/toast";
 
 const useMarkingAssignment = (id) => {
-   const [openModal, setOpenModal] = useState(false);
+   const [openMarkingModal, setOpenMarkingModal] = useState(false);
+   const [openViewSubmissionModal, setOpenViewSubmissionModal] =
+      useState(false);
    const [submissionData, setSubmissionData] = useState({
       obtainedMarks: "",
       feedback: "",
       status: "complete",
    });
 
-   // Handle modal
-   const handleModal = () => {
-      setOpenModal(!openModal);
+   // Handle marking modal
+   const handleMarkModal = () => {
+      setOpenMarkingModal(!openMarkingModal);
+   };
+
+   // Handle marking modal
+   const handleViewSubmissionModal = () => {
+      setOpenViewSubmissionModal(!openViewSubmissionModal);
    };
 
    // Marking change handler
@@ -28,7 +35,7 @@ const useMarkingAssignment = (id) => {
       mutationFn: () => assignmentMarking(id, submissionData),
       onSuccess: ({ _id }) => {
          _id && showToast("Feedback Submitted", "success");
-         setOpenModal(!openModal);
+         setOpenMarkingModal(!openMarkingModal);
       },
       onError: () => {
          showToast("Something went wrong!", "error");
@@ -40,11 +47,13 @@ const useMarkingAssignment = (id) => {
       mutate();
    };
    return {
-      handleModal,
+      handleMarkModal,
       handleSubmitData,
       submissionData,
       markingFormChangeHandler,
-      openModal,
+      openMarkingModal,
+      handleViewSubmissionModal,
+      openViewSubmissionModal,
    };
 };
 
