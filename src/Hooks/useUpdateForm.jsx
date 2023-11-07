@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getSingleAssignment, updateAssignment } from "../API/serverRequest";
 import { validateAssignmentFields } from "../Utils/assignmentFieldValidator";
 import { showToast } from "../Utils/toast";
-import useAuth from "./useAuth";
 
 // Assignment Data fields
 const initialFields = {
@@ -18,7 +17,7 @@ const initialFields = {
 
 const useUpdateAssignment = () => {
    const { id } = useParams();
-   const { user } = useAuth();
+   // const { user } = useAuth();
    const navigate = useNavigate();
    const [selectedDate, setSelectedDate] = useState(new Date());
    const [assignmentData, setAssignmentData] = useState(initialFields);
@@ -34,7 +33,6 @@ const useUpdateAssignment = () => {
       queryKey: ["assignment"],
       queryFn: () => getSingleAssignment(id),
    });
-
    useEffect(() => {
       setAssignmentData((prevData) => ({
          ...prevData,
@@ -47,25 +45,20 @@ const useUpdateAssignment = () => {
       }));
    }, [data]);
 
-   // Set user email in assignment data
-   useEffect(() => {
-      setAssignmentData((prevData) => ({
-         ...prevData,
-         userEmail: user && user.email,
-      }));
-   }, [user]);
-
    // Call server with tan stack query
-
    const { isPending, mutate } = useMutation({
-      mutationFn: () => updateAssignment(assignmentData, id),
+      mutationFn: () => updateAssignment(assignmentData, id, data?.userEmail),
       onSuccess: ({ _id }) => {
          _id && showToast("Assignment Updated", "success");
          setAssignmentData(initialFields);
          navigate("/assignments");
       },
-      onError: () => {
-         showToast("Something went wrong!", "error");
+      onError: ({ response }) => {
+         if (response.status === 401) {
+            showToast("Unauthorized user!", "error");
+         } else {
+            showToast("Something went wrong!", "error");
+         }
       },
    });
 

@@ -35,10 +35,11 @@ export const submitSolution = async (submissionData) => {
 };
 
 // Update assignment
-export const updateAssignment = async (submissionData, id) => {
+export const updateAssignment = async (submissionData, id, email) => {
    const { data: response } = await axios.put(
-      `${import.meta.env.VITE_SERVER_API}/assignments/${id}`,
-      submissionData
+      `${import.meta.env.VITE_SERVER_API}/assignments/${id}?email=${email}`,
+      submissionData,
+      { withCredentials: true }
    );
    return response;
 };
@@ -66,6 +67,25 @@ export const assignmentMarking = async (id, markingData) => {
    const { data: response } = await axios.put(
       `${import.meta.env.VITE_SERVER_API}/submittedAssignment/${id}`,
       markingData
+   );
+   return response;
+};
+
+// Request for token
+export const generateToken = async (email) => {
+   const { data: response } = await axios.post(
+      `${import.meta.env.VITE_SERVER_API}/token`,
+      { email },
+      { withCredentials: true }
+   );
+   return response;
+};
+
+// Clear token from cookie when logout
+export const clearToken = async () => {
+   const { data: response } = await axios.post(
+      `${import.meta.env.VITE_SERVER_API}/logout`,
+      { withCredentials: true }
    );
    return response;
 };
