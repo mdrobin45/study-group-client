@@ -40,7 +40,9 @@ const GiveMarkModal = ({
                      PDF Link
                   </Typography>
                   <a
-                     href="#"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     href={submittedData.pdfLink}
                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                      {submittedData.pdfLink}
                   </a>

@@ -20,9 +20,6 @@ const ViewFeedbackModal = ({ feedback, open, handleOpen }) => {
                   />
                </div>
                <div>
-                  <Typography className="font-bold text-gray-900">
-                     Feedback
-                  </Typography>
                   <p>{feedback}</p>
                </div>
             </CardBody>
