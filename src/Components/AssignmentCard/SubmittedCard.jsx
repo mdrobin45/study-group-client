@@ -14,6 +14,7 @@ import { FaRegHourglassHalf } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
 import useMarkingAssignment from "../../Hooks/useMarkingAssignment";
 import GiveMarkModal from "../GiveMarkModal/GiveMarkModal";
+import ViewFeedbackModal from "../VewFeedbackModal/ViewFeedbackModal";
 import ViewSubmissionModal from "../ViewSubmissionModal/ViewSubmissionModal";
 
 const SubmittedCard = ({ assignmentData }) => {
@@ -25,6 +26,7 @@ const SubmittedCard = ({ assignmentData }) => {
       note,
       pdfLink,
       status,
+      feedback,
       obtainedMarks,
    } = assignmentData;
 
@@ -36,6 +38,8 @@ const SubmittedCard = ({ assignmentData }) => {
       openMarkingModal,
       handleViewSubmissionModal,
       openViewSubmissionModal,
+      handleViewFeedbackModal,
+      openViewFeedbackModal,
    } = useMarkingAssignment(id);
 
    return (
@@ -104,11 +108,18 @@ const SubmittedCard = ({ assignmentData }) => {
          </CardBody>
          <CardFooter className="pt-0 justify-between flex">
             {status === "complete" ? (
-               <Button
-                  // onClick={handleModal}
-                  className="bg-secondary w-full tracking-wider text-sm font-normal">
-                  View Feedback
-               </Button>
+               <>
+                  <Button
+                     onClick={handleViewFeedbackModal}
+                     className="bg-secondary w-full tracking-wider text-sm font-normal">
+                     View Feedback
+                  </Button>
+                  <ViewFeedbackModal
+                     handleOpen={handleViewFeedbackModal}
+                     feedback={feedback}
+                     open={openViewFeedbackModal}
+                  />
+               </>
             ) : (
                <>
                   {pathname === "/my-assignments" ? (

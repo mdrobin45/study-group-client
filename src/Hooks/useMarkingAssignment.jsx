@@ -7,6 +7,7 @@ const useMarkingAssignment = (id) => {
    const [openMarkingModal, setOpenMarkingModal] = useState(false);
    const [openViewSubmissionModal, setOpenViewSubmissionModal] =
       useState(false);
+   const [openViewFeedbackModal, setOpenViewFeedbackModal] = useState(false);
    const [submissionData, setSubmissionData] = useState({
       obtainedMarks: "",
       feedback: "",
@@ -21,6 +22,11 @@ const useMarkingAssignment = (id) => {
    // Handle marking modal
    const handleViewSubmissionModal = () => {
       setOpenViewSubmissionModal(!openViewSubmissionModal);
+   };
+
+   // Handle marking modal
+   const handleViewFeedbackModal = () => {
+      setOpenViewFeedbackModal(!openViewFeedbackModal);
    };
 
    // Marking change handler
@@ -54,6 +60,8 @@ const useMarkingAssignment = (id) => {
       openMarkingModal,
       handleViewSubmissionModal,
       openViewSubmissionModal,
+      handleViewFeedbackModal,
+      openViewFeedbackModal,
    };
 };
 
