@@ -38,7 +38,7 @@ const useSolutionSubmit = () => {
    // Get single assignment
    const { isPending: pendingAssignment, data: singleAssignment } = useQuery({
       queryKey: ["assignment"],
-      queryFn: () => getSingleAssignment(id),
+      queryFn: () => getSingleAssignment(id, user?.email),
    });
 
    // Assignment submission change handler
@@ -50,7 +50,7 @@ const useSolutionSubmit = () => {
    // Handle submission with tan stack query
    const { mutate } = useMutation({
       mutationKey: ["assignmentSubmit"],
-      mutationFn: () => submitSolution(submissionData),
+      mutationFn: () => submitSolution(submissionData, user?.email),
       onSuccess: ({ _id }) => {
          _id && showToast("Assignment Submitted", "success");
          setOpenModal(!openModal);

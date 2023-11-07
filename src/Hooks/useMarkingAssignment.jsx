@@ -2,8 +2,10 @@ import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { assignmentMarking } from "../API/serverRequest";
 import { showToast } from "../Utils/toast";
+import useAuth from "./useAuth";
 
 const useMarkingAssignment = (id) => {
+   const { user } = useAuth();
    const [openMarkingModal, setOpenMarkingModal] = useState(false);
    const [openViewSubmissionModal, setOpenViewSubmissionModal] =
       useState(false);
@@ -38,7 +40,7 @@ const useMarkingAssignment = (id) => {
    // Handle submission with tan stack query
    const { mutate } = useMutation({
       mutationKey: ["assignmentSubmit"],
-      mutationFn: () => assignmentMarking(id, submissionData),
+      mutationFn: () => assignmentMarking(id, submissionData, user?.email),
       onSuccess: ({ _id }) => {
          _id && showToast("Feedback Submitted", "success");
          setOpenMarkingModal(!openMarkingModal);

@@ -36,7 +36,7 @@ const useCreateAssignment = () => {
 
    // Call server with tan stack query
    const { mutate, isPending } = useMutation({
-      mutationFn: () => createAssignment(assignmentData),
+      mutationFn: () => createAssignment(assignmentData, user?.email),
       onSuccess: ({ _id }) => {
          _id && showToast("Assignment Created", "success");
          setAssignmentData(initialFields);

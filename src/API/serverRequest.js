@@ -1,10 +1,12 @@
 import axios from "axios";
 
 // Post single assignment
-export const createAssignment = async (assignmentData) => {
+export const createAssignment = async (assignmentData, email) => {
+   console.log(email);
    const { data: response } = await axios.post(
-      `${import.meta.env.VITE_SERVER_API}/assignments`,
-      assignmentData
+      `${import.meta.env.VITE_SERVER_API}/assignments?email=${email}`,
+      assignmentData,
+      { withCredentials: true }
    );
    return response;
 };
@@ -18,18 +20,20 @@ export const getAllAssignments = async () => {
 };
 
 // Get single assignment
-export const getSingleAssignment = async (id) => {
-   const { data: response } = await axios(
-      `${import.meta.env.VITE_SERVER_API}/assignments/${id}`
+export const getSingleAssignment = async (id, email) => {
+   const { data: response } = await axios.get(
+      `${import.meta.env.VITE_SERVER_API}/assignments/${id}?email=${email}`,
+      { withCredentials: true }
    );
    return response;
 };
 
 // Submit assignment solution
-export const submitSolution = async (submissionData) => {
+export const submitSolution = async (submissionData, email) => {
    const { data: response } = await axios.post(
-      `${import.meta.env.VITE_SERVER_API}/submittedAssignment`,
-      submissionData
+      `${import.meta.env.VITE_SERVER_API}/submittedAssignment?email=${email}`,
+      submissionData,
+      { withCredentials: true }
    );
    return response;
 };
@@ -45,9 +49,12 @@ export const updateAssignment = async (submissionData, id, email) => {
 };
 
 // Get all pending Submitted assignments
-export const getSubmittedAssignments = async (query) => {
+export const getSubmittedAssignments = async (query, email) => {
    const { data: response } = await axios.get(
-      `${import.meta.env.VITE_SERVER_API}/submittedAssignment?filter=${query}`
+      `${
+         import.meta.env.VITE_SERVER_API
+      }/submittedAssignment?filter=${query}&email=${email}`,
+      { withCredentials: true }
    );
    return response;
 };
@@ -57,16 +64,20 @@ export const getUserPendingAssignments = async (email) => {
    const { data: response } = await axios.get(
       `${
          import.meta.env.VITE_SERVER_API
-      }/submittedAssignment/user?email=${email}`
+      }/submittedAssignment/user?email=${email}`,
+      { withCredentials: true }
    );
    return response;
 };
 
 // assignment marking and update status
-export const assignmentMarking = async (id, markingData) => {
+export const assignmentMarking = async (id, markingData, email) => {
    const { data: response } = await axios.put(
-      `${import.meta.env.VITE_SERVER_API}/submittedAssignment/${id}`,
-      markingData
+      `${
+         import.meta.env.VITE_SERVER_API
+      }/submittedAssignment/${id}?email=${email}`,
+      markingData,
+      { withCredentials: true }
    );
    return response;
 };
