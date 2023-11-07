@@ -43,10 +43,19 @@ export const updateAssignment = async (submissionData, id) => {
    return response;
 };
 
-// Update assignment
+// Get Submitted assignments
 export const getSubmittedAssignments = async (query) => {
    const { data: response } = await axios.get(
       `${import.meta.env.VITE_SERVER_API}/submittedAssignment?filter=${query}`
+   );
+   return response;
+};
+
+// assignment marking and update status
+export const assignmentMarking = async (id, markingData) => {
+   const { data: response } = await axios.put(
+      `${import.meta.env.VITE_SERVER_API}/submittedAssignment/${id}`,
+      markingData
    );
    return response;
 };
