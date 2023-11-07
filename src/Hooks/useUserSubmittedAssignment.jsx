@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSubmittedAssignments } from "../API/serverRequest";
+import { getUserPendingAssignments } from "../API/serverRequest";
+import useAuth from "./useAuth";
 
 const useUserSubmittedAssignment = () => {
+   const { user } = useAuth();
    const { isPending, data: mySubmittedAssignments } = useQuery({
       queryKey: ["mySubmittedAssignments"],
-      queryFn: () => getSubmittedAssignments(""),
+      queryFn: () => getUserPendingAssignments(user && user.email),
    });
 
    return { mySubmittedAssignments, isPending };

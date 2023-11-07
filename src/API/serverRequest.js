@@ -43,10 +43,20 @@ export const updateAssignment = async (submissionData, id) => {
    return response;
 };
 
-// Get Submitted assignments
+// Get all pending Submitted assignments
 export const getSubmittedAssignments = async (query) => {
    const { data: response } = await axios.get(
       `${import.meta.env.VITE_SERVER_API}/submittedAssignment?filter=${query}`
+   );
+   return response;
+};
+
+// Get user submitted assignments
+export const getUserPendingAssignments = async (email) => {
+   const { data: response } = await axios.get(
+      `${
+         import.meta.env.VITE_SERVER_API
+      }/submittedAssignment/user?email=${email}`
    );
    return response;
 };
