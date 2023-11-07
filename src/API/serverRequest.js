@@ -118,3 +118,13 @@ export const clearToken = async () => {
    );
    return response;
 };
+
+// Load paginated assignment
+export const paginatedAssignment = async (pageNumber, pageSize) => {
+   const { data: response } = await axios.get(
+      `${
+         import.meta.env.VITE_SERVER_API
+      }/assignments/paginate?pageNumber=${pageNumber}&pageSize=${pageSize}`
+   );
+   return response;
+};

@@ -8,6 +8,8 @@ import {
    Textarea,
    Typography,
 } from "@material-tailwind/react";
+import { useState } from "react";
+import ViewPDFModal from "./ViewPDFModal";
 
 const GiveMarkModal = ({
    open,
@@ -17,6 +19,12 @@ const GiveMarkModal = ({
    markingData,
    handleSubmit,
 }) => {
+   const [pdfView, setPdfView] = useState(false);
+
+   // Handle pdf view
+   const handlePdfView = () => {
+      setPdfView(!pdfView);
+   };
    return (
       <Dialog
          size="xs"
@@ -36,16 +44,14 @@ const GiveMarkModal = ({
                </Typography>
 
                <div>
-                  <Typography className="font-bold text-gray-900">
-                     PDF Link
-                  </Typography>
-                  <a
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     href={submittedData.pdfLink}
-                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                     {submittedData.pdfLink}
-                  </a>
+                  <Button className="mt-4" onClick={handlePdfView}>
+                     View PDF
+                  </Button>
+                  <ViewPDFModal
+                     pdfLink={submittedData.pdfLink}
+                     open={pdfView}
+                     handleOpen={handlePdfView}
+                  />
                </div>
                <div>
                   <Typography className="font-bold text-gray-900">
