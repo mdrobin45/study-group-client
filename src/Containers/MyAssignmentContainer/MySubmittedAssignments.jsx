@@ -1,3 +1,4 @@
+import { ClipLoader } from "react-spinners";
 import SubmittedCard from "../../Components/AssignmentCard/SubmittedCard";
 import useUserSubmittedAssignment from "../../Hooks/useUserSubmittedAssignment";
 
@@ -13,7 +14,9 @@ const MySubmittedAssignments = () => {
                ))}
             </div>
          ) : (
-            "Loading"
+            <div className="h-screen flex flex-col items-center justify-center">
+               <ClipLoader color="#1eaace" />
+            </div>
          )}
       </>
    );

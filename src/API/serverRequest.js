@@ -2,7 +2,6 @@ import axios from "axios";
 
 // Post single assignment
 export const createAssignment = async (assignmentData, email) => {
-   console.log(email);
    const { data: response } = await axios.post(
       `${import.meta.env.VITE_SERVER_API}/assignments?email=${email}`,
       assignmentData,

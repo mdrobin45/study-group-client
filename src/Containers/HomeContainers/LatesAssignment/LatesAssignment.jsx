@@ -1,3 +1,4 @@
+import { ClipLoader } from "react-spinners";
 import AssignmentCard from "../../../Components/AssignmentCard/AssignmentCard";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import useAssignments from "../../../Hooks/useAssignments";
@@ -7,7 +8,7 @@ const LatesAssignment = () => {
    const sliceAss = assignments.slice(0, 6);
    return (
       <>
-         {!isPending && (
+         {!isPending ? (
             <>
                <div className="pt-20">
                   <SectionHeader
@@ -24,6 +25,10 @@ const LatesAssignment = () => {
                   </div>
                </div>
             </>
+         ) : (
+            <div className="h-screen flex flex-col items-center justify-center">
+               <ClipLoader color="#1eaace" />
+            </div>
          )}
       </>
    );
