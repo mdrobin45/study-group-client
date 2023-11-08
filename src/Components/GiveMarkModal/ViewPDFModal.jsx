@@ -1,10 +1,5 @@
 import { Card, CardBody, Dialog, Typography } from "@material-tailwind/react";
-import { pdfjs } from "react-pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-   "pdfjs-dist/build/pdf.worker.min.js",
-   import.meta.url
-).toString();
 const ViewPDFModal = ({ open, handleOpen, pdfLink }) => {
    const originalLink = pdfLink.split("/view")[0];
 
