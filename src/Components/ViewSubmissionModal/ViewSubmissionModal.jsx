@@ -1,7 +1,20 @@
-import { Card, CardBody, Dialog, Typography } from "@material-tailwind/react";
+import {
+   Button,
+   Card,
+   CardBody,
+   Dialog,
+   Typography,
+} from "@material-tailwind/react";
+import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import ViewPDFModal from "../GiveMarkModal/ViewPDFModal";
 
 const ViewSubmissionModal = ({ submittedData, open, handleOpen }) => {
+   const [pdfView, setPdfView] = useState(false);
+
+   const handlePdfView = () => {
+      setPdfView(!pdfView);
+   };
    return (
       <Dialog
          size="xs"
@@ -21,16 +34,14 @@ const ViewSubmissionModal = ({ submittedData, open, handleOpen }) => {
                </div>
 
                <div>
-                  <Typography className="font-bold text-gray-900">
-                     PDF Link
-                  </Typography>
-                  <a
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     href={submittedData.pdfLink}
-                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                     {submittedData.pdfLink}
-                  </a>
+                  <Button className="mt-4" onClick={handlePdfView}>
+                     View PDF
+                  </Button>
+                  <ViewPDFModal
+                     pdfLink={submittedData.pdfLink}
+                     open={pdfView}
+                     handleOpen={handlePdfView}
+                  />
                </div>
                <div>
                   <Typography className="font-bold text-gray-900">

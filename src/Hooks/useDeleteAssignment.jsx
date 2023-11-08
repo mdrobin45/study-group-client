@@ -1,8 +1,11 @@
 import { deleteAssignment } from "../API/serverRequest";
+import { showToast } from "../Utils/toast";
 
 const useDeleteAssignment = () => {
    const deleteHandler = ({ email, id }) => {
-      deleteAssignment(id, email).then((res) => console.log(res));
+      deleteAssignment(id, email).then(
+         ({ _id }) => _id && showToast("Task Deleted", "success")
+      );
    };
    return { deleteHandler };
 };

@@ -29,7 +29,7 @@ const SubmittedCard = ({ assignmentData }) => {
       feedback,
       obtainedMarks,
    } = assignmentData;
-
+   console.log(assignment);
    const {
       handleMarkModal,
       handleSubmitData,
@@ -47,13 +47,13 @@ const SubmittedCard = ({ assignmentData }) => {
          <CardHeader color="blue-gray" className="relative h-56 mt-0">
             <img
                className="h-full mt-0"
-               src={assignment.thumbnail}
+               src={assignment?.thumbnail}
                alt="Thumbnail"
             />
          </CardHeader>
          <CardBody>
             <Typography variant="h5" color="blue-gray" className="mb-2">
-               {assignment.title}
+               {assignment?.title}
             </Typography>
             <div className="flex mt-4 items-center gap-3">
                <span>
@@ -61,7 +61,7 @@ const SubmittedCard = ({ assignmentData }) => {
                </span>
                <span>
                   <span className="font-bold text-gray-900">Total Marks: </span>
-                  {assignment.totalMarks}
+                  {assignment?.totalMarks}
                </span>
             </div>
             {obtainedMarks && (
