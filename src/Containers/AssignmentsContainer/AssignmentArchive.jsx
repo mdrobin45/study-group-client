@@ -8,8 +8,6 @@ const AssignmentArchive = () => {
    const { assignments, isPending } = useAssignments();
    const [filteredAssignment, setFilteredAssignment] = useState([]);
 
-   console.log(assignments);
-
    const handleFilter = (value) => {
       if (!isPending) {
          if (value === "All") {
@@ -37,12 +35,25 @@ const AssignmentArchive = () => {
          {!isPending ? (
             <>
                <div className="grid mb-20 grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-4">
-                  {filteredAssignment.map((assignment) => (
-                     <AssignmentCard
-                        assignmentData={assignment}
-                        key={assignment._id}
-                     />
-                  ))}
+                  {!filteredAssignment.length ? (
+                     <>
+                        {assignments.map((assignment) => (
+                           <AssignmentCard
+                              assignmentData={assignment}
+                              key={assignment._id}
+                           />
+                        ))}
+                     </>
+                  ) : (
+                     <>
+                        {filteredAssignment.map((assignment) => (
+                           <AssignmentCard
+                              assignmentData={assignment}
+                              key={assignment._id}
+                           />
+                        ))}
+                     </>
+                  )}
                </div>
             </>
          ) : (
