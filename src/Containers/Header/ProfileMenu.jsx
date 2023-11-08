@@ -38,7 +38,7 @@ const ProfileMenu = () => {
                <Avatar
                   variant="circular"
                   size="sm"
-                  alt="tania andrew"
+                  alt="Profile"
                   className="border border-gray-900 p-0.5"
                   src={
                      user ? user.photoURL : "https://i.ibb.co/238dYyx/user.png"
