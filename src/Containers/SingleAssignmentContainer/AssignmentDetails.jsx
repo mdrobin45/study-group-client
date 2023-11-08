@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { AiFillTrophy, AiOutlineCalendar } from "react-icons/ai";
 import { IoExtensionPuzzleSharp } from "react-icons/io5";
+import { ClipLoader } from "react-spinners";
 import useSolutionSubmit from "../../Hooks/useSolutionSubmit";
 import TakeAssignmentForm from "./TakeAssignmentForm";
 
@@ -99,7 +100,9 @@ const AssignmentDetails = () => {
                </CardFooter>
             </Card>
          ) : (
-            "loading"
+            <div className="h-screen flex flex-col items-center justify-center">
+               <ClipLoader color="#1eaace" />
+            </div>
          )}
       </>
    );
