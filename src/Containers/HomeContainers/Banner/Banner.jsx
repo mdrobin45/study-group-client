@@ -6,7 +6,7 @@ import Slider from "../../../Components/Slider/Slider";
 
 const Banner = () => {
    return (
-      <div className="relative pb-40">
+      <div className="relative pb-10 md:pb-20 lg:pb-40">
          <Swiper
             pagination={{
                dynamicBullets: true,

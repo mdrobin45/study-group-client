@@ -6,7 +6,7 @@ import icon2 from "../../../assets/images/submission.svg";
 
 const FeatureCards = () => {
    return (
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 absolute -bottom-2 left-5 right-5 z-10">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 lg:absolute -bottom-2 left-5 right-5 z-10">
          <FeatureCard
             icon={icon1}
             text="Assignment Creation"

@@ -1,7 +1,7 @@
 const AboutLeft = () => {
    return (
-      <div className="w-2/4">
-         <h1 className="text-4xl font-bold">
+      <div className="lg:w-2/4 text-center md:text-left">
+         <h1 className="text-2xl md:text-4xl font-bold">
             Experience a dynamic online assignment community
          </h1>
          <p className="pt-6">

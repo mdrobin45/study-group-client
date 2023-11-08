@@ -43,7 +43,7 @@ const SubmittedCard = ({ assignmentData }) => {
    } = useMarkingAssignment(id);
 
    return (
-      <Card className="w-96 border pt-4">
+      <Card className="md:w-86 lg:w-96 border pt-4">
          <CardHeader color="blue-gray" className="relative h-56 mt-0">
             <img
                className="h-full mt-0"
@@ -122,7 +122,7 @@ const SubmittedCard = ({ assignmentData }) => {
                </>
             ) : (
                <>
-                  {pathname === "/my-assignments" ? (
+                  {pathname === "/my-submission" ? (
                      <>
                         <Button
                            onClick={handleViewSubmissionModal}

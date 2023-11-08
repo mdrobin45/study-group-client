@@ -25,7 +25,7 @@ const CreateAssignmentForm = () => {
          <PageHeader title="Create Assignment" />
          <form
             onSubmit={handleFormSubmit}
-            className="w-2/4 mx-auto my-20 p-4 border shadow-md rounded-md">
+            className="lg:w-2/4 mx-3  lg:mx-auto my-20 p-4 border shadow-md rounded-md">
             <h2 className="text-2xl font-bold text-center pb-4">
                Assignment Details
             </h2>

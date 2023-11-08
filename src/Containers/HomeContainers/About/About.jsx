@@ -6,7 +6,7 @@ const About = () => {
    return (
       <>
          <SectionHeader title="About & FAQ" subtitle="Know more" />
-         <div className="flex pt-6 gap-20 justify-between">
+         <div className="flex flex-col lg:flex-row pt-0 md:pt-6 gap-20 justify-between">
             <AboutLeft />
             <Faq />
          </div>

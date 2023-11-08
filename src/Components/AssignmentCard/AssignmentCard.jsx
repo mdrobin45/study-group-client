@@ -27,7 +27,7 @@ const AssignmentCard = ({ assignmentData }) => {
    const { deleteHandler } = useDeleteAssignment();
    const { pathname } = useLocation();
    return (
-      <Card className="w-96 border pt-4">
+      <Card className="md:w-86 lg:w-96 border pt-4">
          <CardHeader color="blue-gray" className="relative h-56 mt-0">
             <img className="h-full mt-0" src={thumbnail} alt="Thumbnail" />
          </CardHeader>
@@ -35,7 +35,7 @@ const AssignmentCard = ({ assignmentData }) => {
             <Typography variant="h5" color="blue-gray" className="mb-2">
                {title}
             </Typography>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between">
                <div className="flex items-center gap-3">
                   <span>
                      <AiFillTrophy className="text-primary" />
@@ -69,7 +69,7 @@ const AssignmentCard = ({ assignmentData }) => {
                </span>
             </div>
          </CardBody>
-         <CardFooter className="pt-0 justify-between flex">
+         <CardFooter className="pt-0 justify-between flex flex-col lg:flex-row">
             {pathname === "/posted-assignment" ? (
                <Button
                   onClick={() => {

@@ -1,6 +1,7 @@
 import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import logo from "../../assets/images/Logo_dark.png";
 import NavList from "./NavList";
 import ProfileMenu from "./ProfileMenu";
 
@@ -12,10 +13,9 @@ export function Header() {
          <div className="bg-white w-11/12 mx-auto border lg:pl-6 lg:rounded-full mt-4 p-2 z-10">
             <div className="relative mx-auto flex items-center justify-between text-blue-gray-900">
                <div>
-                  <img
-                     src="https://eduma.thimpress.com/demo-marketplace/wp-content/uploads/sites/99/2019/02/logo-footer.svg"
-                     alt=""
-                  />
+                  <Link to="/">
+                     <img className="w-40" src={logo} alt="Logo" />
+                  </Link>
                </div>
                <div>
                   <NavList />

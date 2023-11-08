@@ -1,14 +1,14 @@
 import { Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/images/white-logo.png";
 
 const Footer = () => {
    return (
       <footer className="w-full bg-gray-900 p-8 mt-20">
          <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 text-center md:justify-between">
-            <img
-               src="https://eduma.thimpress.com/demo-marketplace/wp-content/uploads/sites/99/2019/02/logo-footer.svg"
-               alt="logo-ct"
-               className="w-32"
-            />
+            <Link to="/">
+               <img src={logo} alt="logo-ct" className="w-55" />
+            </Link>
             <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
                <li>
                   <Typography

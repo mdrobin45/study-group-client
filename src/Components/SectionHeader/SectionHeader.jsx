@@ -1,6 +1,6 @@
 const SectionHeader = ({ title, subtitle }) => {
    return (
-      <div className="flex flex-col items-center justify-center py-6">
+      <div className="flex flex-col items-center justify-center pt-10 pb-4 lg:pb-10">
          <h3 className="text-md flex uppercase items-center gap-2 text-secondary">
             {subtitle}
          </h3>

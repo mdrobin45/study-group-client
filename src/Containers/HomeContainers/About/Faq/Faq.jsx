@@ -44,7 +44,7 @@ const Faq = () => {
    const handleOpen = (value) => setOpen(open === value ? 0 : value);
    return (
       <>
-         <div className="w-2/4">
+         <div className="lg:w-2/4">
             {faqList.map((faq) => (
                <Accordion key={faq.id} open={open === faq.id}>
                   <AccordionHeader onClick={() => handleOpen(faq.id)}>
