@@ -12,7 +12,7 @@ const RegisterForm = () => {
       useRegisterAuth();
 
    return (
-      <div className="mx-auto my-20 w-[26rem] border rounded-md shadow-md">
+      <div className="mx-6 md:mx-auto my-10 md:my-0 md:w-[26rem] border rounded-md shadow-md">
          <AuthFormHeader heading="Sign Up" />
          <form className="w-full px-6" onSubmit={handleFormSubmit}>
             <TextField

@@ -23,7 +23,7 @@ export function Header() {
                <div className="flex items-center gap-3">
                   {!user ? (
                      <Button
-                        className="bg-secondary text-white hover:bg-secondary"
+                        className="bg-secondary mr-6 text-white hover:bg-secondary"
                         size="sm"
                         variant="text">
                         <Link to="/login">Log In</Link>

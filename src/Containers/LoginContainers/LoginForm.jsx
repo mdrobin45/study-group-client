@@ -11,7 +11,7 @@ const LoginForm = () => {
    const { onChangeHandler, handleFormSubmit } = useLoginAuth();
    return (
       <div className="flex h-[80vh] flex-col justify-center items-center">
-         <div className="mx-auto w-[26rem] border rounded-md shadow-md">
+         <div className="mx-6 md:mx-auto my-10 md:my-0 md:w-[26rem] border rounded-md shadow-md">
             <AuthFormHeader heading="Sign In" />
             <form className="w-full px-6" onSubmit={handleFormSubmit}>
                <TextField
