@@ -37,11 +37,12 @@ const AssignmentArchive = () => {
    }
 
    useEffect(() => {
-      if (!isPending && filteredAssignment.length === 0) {
-         const defaultAssignments = assignments.slice(0, itemsPerPage);
-         setFilteredAssignment(defaultAssignments);
+      if (!isPending) {
+         setFilteredAssignment(assignments);
       }
-   }, [isPending, assignments, filteredAssignment]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [isPending]);
+
    return (
       <>
          <div className="mt-20 mb-10 flex flex-col items-end">
