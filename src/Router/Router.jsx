@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import ErrorPage from "../Containers/ErrorPage/ErrorPage";
 import Assignments from "../Pages/Assignments/Assignments";
 import CreateAssignment from "../Pages/CreateAssignment/CreateAssignment";
 import Home from "../Pages/Home/Home";
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
    {
       path: "/",
       element: <Root />,
+      errorElement: <ErrorPage />,
       children: [
          {
             path: "/",
