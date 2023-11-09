@@ -1,4 +1,5 @@
 import { Option, Select } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 import moment from "moment/moment";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -23,7 +24,18 @@ const CreateAssignmentForm = () => {
    return (
       <div>
          <PageHeader title="Create Assignment" />
-         <form
+         <motion.form
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+               duration: 0.3,
+               ease: "linear",
+               scale: {
+                  type: "spring",
+                  damping: 5,
+                  stiffness: 120,
+               },
+            }}
             onSubmit={handleFormSubmit}
             className="lg:w-2/4 mx-3  lg:mx-auto my-20 p-4 border shadow-md rounded-md">
             <h2 className="text-2xl font-bold text-center pb-4">
@@ -103,7 +115,7 @@ const CreateAssignmentForm = () => {
                pending={isPending}
                btnText="Submit"
             />
-         </form>
+         </motion.form>
       </div>
    );
 };

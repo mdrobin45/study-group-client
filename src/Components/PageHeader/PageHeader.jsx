@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const PageHeader = ({ title }) => {
@@ -10,10 +11,28 @@ const PageHeader = ({ title }) => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
          }}>
-         <h2 className="text-2xl md:text-5xl text-white font-barlow font-bold">
+         <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            variants={{
+               hidden: { opacity: 0, x: 0, y: 40 },
+               visible: { opacity: 1, x: 0, y: 0 },
+            }}
+            className="text-2xl md:text-5xl text-white font-barlow font-bold">
             {title}
-         </h2>
-         <nav className="flex justify-center md:justify-start pr-1 md:pr-5 py-3 mt-2 text-white bg-transparent">
+         </motion.h2>
+         <motion.nav
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            variants={{
+               hidden: { opacity: 0, x: 0, y: 40 },
+               visible: { opacity: 1, x: 0, y: 0 },
+            }}
+            className="flex justify-center md:justify-start pr-1 md:pr-5 py-3 mt-2 text-white bg-transparent">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
                <li className="inline-flex items-center">
                   <Link
@@ -52,7 +71,7 @@ const PageHeader = ({ title }) => {
                   </div>
                </li>
             </ol>
-         </nav>
+         </motion.nav>
       </div>
    );
 };

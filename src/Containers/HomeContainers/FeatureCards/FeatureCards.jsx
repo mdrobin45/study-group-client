@@ -11,21 +11,25 @@ const FeatureCards = () => {
             icon={icon1}
             text="Assignment Creation"
             bgColor="#10C45C"
+            delay={0}
          />
          <FeatureCard
             icon={icon2}
             text="Assignment Submission"
             bgColor="#1EC1D9"
+            delay={0.1}
          />
          <FeatureCard
             icon={icon3}
             text="Assignment Grading"
             bgColor="#307AD5"
+            delay={0.2}
          />
          <FeatureCard
             icon={icon4}
             text="Feedback and Ratings"
             bgColor="#D94DA6"
+            delay={0.3}
          />
       </div>
    );

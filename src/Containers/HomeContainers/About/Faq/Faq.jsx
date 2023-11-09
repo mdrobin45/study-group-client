@@ -3,6 +3,7 @@ import {
    AccordionBody,
    AccordionHeader,
 } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 // FAQ list
@@ -47,10 +48,20 @@ const Faq = () => {
          <div className="lg:w-2/4">
             {faqList.map((faq) => (
                <Accordion key={faq.id} open={open === faq.id}>
-                  <AccordionHeader onClick={() => handleOpen(faq.id)}>
-                     {faq.question}
-                  </AccordionHeader>
-                  <AccordionBody>{faq.answer}</AccordionBody>
+                  <motion.div
+                     initial="hidden"
+                     whileInView="visible"
+                     viewport={{ once: true }}
+                     transition={{ duration: 0.5, delay: 0.2 }}
+                     variants={{
+                        hidden: { opacity: 0, x: 0, y: 40 },
+                        visible: { opacity: 1, x: 0, y: 0 },
+                     }}>
+                     <AccordionHeader onClick={() => handleOpen(faq.id)}>
+                        {faq.question}
+                     </AccordionHeader>
+                     <AccordionBody>{faq.answer}</AccordionBody>
+                  </motion.div>
                </Accordion>
             ))}
          </div>

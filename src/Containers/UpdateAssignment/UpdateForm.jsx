@@ -1,4 +1,5 @@
 import { Option, Select } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 import moment from "moment";
 import DatePicker from "react-datepicker";
 import FormSubmit from "../../Components/InputFields/FormSubmit";
@@ -20,7 +21,18 @@ const UpdateForm = () => {
    return (
       <div>
          <PageHeader title="Update Assignment" />
-         <form
+         <motion.form
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+               duration: 0.3,
+               ease: "linear",
+               scale: {
+                  type: "spring",
+                  damping: 5,
+                  stiffness: 120,
+               },
+            }}
             onSubmit={handleFormSubmit}
             className="w-2/4 mx-auto my-20 p-4 border shadow-md rounded-md">
             <h2 className="text-2xl font-bold text-center pb-4">
@@ -100,7 +112,7 @@ const UpdateForm = () => {
                pending={isPending}
                btnText="Submit"
             />
-         </form>
+         </motion.form>
       </div>
    );
 };

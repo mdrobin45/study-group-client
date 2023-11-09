@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import AuthFormFooter from "../../Components/AuthFormFooter/AuthFormFooter";
 import AuthFormHeader from "../../Components/AuthFormHeader/AuthFormHeader";
@@ -11,7 +12,11 @@ const LoginForm = () => {
    const { onChangeHandler, handleFormSubmit } = useLoginAuth();
    return (
       <div className="flex h-[80vh] flex-col justify-center items-center">
-         <div className="mx-6 md:mx-auto my-10 md:my-0 md:w-[26rem] border rounded-md shadow-md">
+         <motion.div
+            initial={{ opacity: 0.8, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mx-6 md:mx-auto my-10 md:my-0 md:w-[26rem] border rounded-md shadow-md">
             <AuthFormHeader heading="Sign In" />
             <form className="w-full px-6" onSubmit={handleFormSubmit}>
                <TextField
@@ -63,7 +68,7 @@ const LoginForm = () => {
                <GoogleSignIn />
             </form>
             <AuthFormFooter loginPage={true} />
-         </div>
+         </motion.div>
       </div>
    );
 };

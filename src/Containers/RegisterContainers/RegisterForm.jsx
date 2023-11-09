@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import AuthFormFooter from "../../Components/AuthFormFooter/AuthFormFooter";
 import AuthFormHeader from "../../Components/AuthFormHeader/AuthFormHeader";
@@ -12,7 +13,11 @@ const RegisterForm = () => {
       useRegisterAuth();
 
    return (
-      <div className="mx-6 md:mx-auto my-10 md:my-0 md:w-[26rem] border rounded-md shadow-md">
+      <motion.div
+         initial={{ opacity: 0.8, x: 30 }}
+         animate={{ opacity: 1, x: 0 }}
+         transition={{ duration: 0.8 }}
+         className="mx-6 md:mx-auto my-10 md:my-0 md:w-[26rem] border rounded-md shadow-md">
          <AuthFormHeader heading="Sign Up" />
          <form className="w-full px-6" onSubmit={handleFormSubmit}>
             <TextField
@@ -70,7 +75,7 @@ const RegisterForm = () => {
             <GoogleSignIn />
          </form>
          <AuthFormFooter registerPage={true} />
-      </div>
+      </motion.div>
    );
 };
 

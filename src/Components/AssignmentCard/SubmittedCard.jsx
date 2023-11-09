@@ -7,6 +7,7 @@ import {
    Chip,
    Typography,
 } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 import { AiFillTrophy } from "react-icons/ai";
 import { BsTrophy } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
@@ -29,7 +30,6 @@ const SubmittedCard = ({ assignmentData }) => {
       feedback,
       obtainedMarks,
    } = assignmentData;
-   console.log(assignment);
    const {
       handleMarkModal,
       handleSubmitData,
@@ -43,118 +43,132 @@ const SubmittedCard = ({ assignmentData }) => {
    } = useMarkingAssignment(id);
 
    return (
-      <Card className="md:w-86 lg:w-96 border pt-4">
-         <CardHeader color="blue-gray" className="relative h-56 mt-0">
-            <img
-               className="h-full mt-0"
-               src={assignment?.thumbnail}
-               alt="Thumbnail"
-            />
-         </CardHeader>
-         <CardBody>
-            <Typography variant="h5" color="blue-gray" className="mb-2">
-               {assignment?.title}
-            </Typography>
-            <div className="flex mt-4 items-center gap-3">
-               <span>
-                  <AiFillTrophy className="text-primary" />
-               </span>
-               <span>
-                  <span className="font-bold text-gray-900">Total Marks: </span>
-                  {assignment?.totalMarks}
-               </span>
-            </div>
-            {obtainedMarks && (
+      <motion.div
+         initial="hidden"
+         whileInView="visible"
+         viewport={{ once: true }}
+         transition={{ duration: 0.5 }}
+         variants={{
+            hidden: { opacity: 0, x: 0, y: 40 },
+            visible: { opacity: 1, x: 0, y: 0 },
+         }}>
+         <Card className="md:w-86 lg:w-96 border pt-4">
+            <CardHeader color="blue-gray" className="relative h-56 mt-0">
+               <img
+                  className="h-full mt-0"
+                  src={assignment?.thumbnail}
+                  alt="Thumbnail"
+               />
+            </CardHeader>
+            <CardBody>
+               <Typography variant="h5" color="blue-gray" className="mb-2">
+                  {assignment?.title}
+               </Typography>
                <div className="flex mt-4 items-center gap-3">
                   <span>
-                     <BsTrophy className="text-primary" />
+                     <AiFillTrophy className="text-primary" />
                   </span>
                   <span>
                      <span className="font-bold text-gray-900">
-                        Obtained Marks:{" "}
+                        Total Marks:{" "}
                      </span>
-                     {obtainedMarks}
+                     {assignment?.totalMarks}
                   </span>
                </div>
-            )}
+               {obtainedMarks && (
+                  <div className="flex mt-4 items-center gap-3">
+                     <span>
+                        <BsTrophy className="text-primary" />
+                     </span>
+                     <span>
+                        <span className="font-bold text-gray-900">
+                           Obtained Marks:{" "}
+                        </span>
+                        {obtainedMarks}
+                     </span>
+                  </div>
+               )}
 
-            {status !== "complete" && (
+               {status !== "complete" && (
+                  <div className="flex mt-3 items-center gap-3">
+                     <span>
+                        <FaUserGraduate className="text-primary" />
+                     </span>
+                     <span>
+                        <span className="font-bold text-gray-900">
+                           Examinee:{" "}
+                        </span>
+                        {examineeName}
+                     </span>
+                  </div>
+               )}
+
                <div className="flex mt-3 items-center gap-3">
                   <span>
-                     <FaUserGraduate className="text-primary" />
+                     <FaRegHourglassHalf className="text-primary" />
                   </span>
-                  <span>
-                     <span className="font-bold text-gray-900">Examinee: </span>
-                     {examineeName}
+                  <span className="flex items-center gap-2">
+                     <span className="font-bold text-gray-900">Status:</span>
+                     <Chip
+                        className=" capitalize"
+                        variant="ghost"
+                        color={status === "pending" ? "cyan" : "green"}
+                        size="sm"
+                        value={status}
+                     />
                   </span>
                </div>
-            )}
-
-            <div className="flex mt-3 items-center gap-3">
-               <span>
-                  <FaRegHourglassHalf className="text-primary" />
-               </span>
-               <span className="flex items-center gap-2">
-                  <span className="font-bold text-gray-900">Status:</span>
-                  <Chip
-                     className=" capitalize"
-                     variant="ghost"
-                     color={status === "pending" ? "cyan" : "green"}
-                     size="sm"
-                     value={status}
-                  />
-               </span>
-            </div>
-         </CardBody>
-         <CardFooter className="pt-0 justify-between flex">
-            {status === "complete" ? (
-               <>
-                  <Button
-                     onClick={handleViewFeedbackModal}
-                     className="bg-secondary w-full tracking-wider text-sm font-normal">
-                     View Feedback
-                  </Button>
-                  <ViewFeedbackModal
-                     handleOpen={handleViewFeedbackModal}
-                     feedback={feedback}
-                     open={openViewFeedbackModal}
-                  />
-               </>
-            ) : (
-               <>
-                  {pathname === "/my-submission" ? (
-                     <>
-                        <Button
-                           onClick={handleViewSubmissionModal}
-                           className="bg-secondary w-full tracking-wider text-sm font-normal">
-                           My Submission
-                        </Button>
-                        <ViewSubmissionModal
-                           handleOpen={handleViewSubmissionModal}
-                           submittedData={{ pdfLink, note }}
-                           open={openViewSubmissionModal}
-                        />
-                     </>
-                  ) : (
+            </CardBody>
+            <CardFooter className="pt-0 justify-between flex">
+               {status === "complete" ? (
+                  <>
                      <Button
-                        onClick={handleMarkModal}
+                        onClick={handleViewFeedbackModal}
                         className="bg-secondary w-full tracking-wider text-sm font-normal">
-                        Give Mark
+                        View Feedback
                      </Button>
-                  )}
-               </>
-            )}
+                     <ViewFeedbackModal
+                        handleOpen={handleViewFeedbackModal}
+                        feedback={feedback}
+                        open={openViewFeedbackModal}
+                     />
+                  </>
+               ) : (
+                  <>
+                     {pathname === "/my-submission" ? (
+                        <>
+                           <Button
+                              onClick={handleViewSubmissionModal}
+                              className="bg-secondary w-full tracking-wider text-sm font-normal">
+                              My Submission
+                           </Button>
+                           <ViewSubmissionModal
+                              handleOpen={handleViewSubmissionModal}
+                              submittedData={{ pdfLink, note }}
+                              open={openViewSubmissionModal}
+                           />
+                        </>
+                     ) : (
+                        <Button
+                           onClick={handleMarkModal}
+                           className="bg-secondary w-full tracking-wider text-sm font-normal">
+                           Give Mark
+                        </Button>
+                     )}
+                  </>
+               )}
 
-            <GiveMarkModal
-               handleSubmit={handleSubmitData}
-               submittedData={{ pdfLink, note }}
-               markingData={submissionData}
-               changeHandler={markingFormChangeHandler}
-               open={openMarkingModal}
-               handleOpen={handleMarkModal}
-            />
-         </CardFooter>
-      </Card>
+               <GiveMarkModal
+                  handleSubmit={handleSubmitData}
+                  submittedData={{ pdfLink, note }}
+                  markingData={submissionData}
+                  changeHandler={markingFormChangeHandler}
+                  open={openMarkingModal}
+                  handleOpen={handleMarkModal}
+               />
+            </CardFooter>
+         </Card>
+      </motion.div>
    );
 };
 
