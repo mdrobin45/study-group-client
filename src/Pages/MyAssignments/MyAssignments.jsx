@@ -4,7 +4,7 @@ import MySubmittedAssignments from "../../Containers/MyAssignmentContainer/MySub
 const MyAssignments = () => {
    return (
       <div>
-         <PageHeader title="My Assignments" />
+         <PageHeader title="My Submission" />
          <MySubmittedAssignments />
       </div>
    );
