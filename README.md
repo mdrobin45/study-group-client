@@ -34,4 +34,4 @@ https://group-study-server-kappa.vercel.app
 
 ## Live Link
 
-https://group-study-6f611.web.app/
+https://assignment-11-robin45r.netlify.app/
