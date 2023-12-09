@@ -98,7 +98,7 @@ const AssignmentDetails = () => {
                         className="bg-secondary tracking-wider text-sm font-normal"
                         size="lg"
                         fullWidth={true}>
-                        Take Assignment
+                        Submit Solution
                      </Button>
                      <TakeAssignmentForm
                         handleSubmit={handleSubmitData}
