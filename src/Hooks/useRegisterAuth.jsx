@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import ReactGA from "react-ga";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Context/AuthContextProvider";
@@ -56,6 +57,12 @@ const useRegisterAuth = () => {
                   photoURL: formData.photoUrl,
                });
 
+               // Google analytics for user register
+               ReactGA.event({
+                  category: "User",
+                  action: "Created an account",
+               });
+
                // Show toast
                toast.update(toastMsg, {
                   render: "Registration Successful!",
@@ -66,6 +73,10 @@ const useRegisterAuth = () => {
             }
          })
          .catch((err) => {
+            ReactGA.exception({
+               description: "An error ocurred",
+               fatal: true,
+            });
             toast.update(toastMsg, {
                render: "Registration failed!",
                type: "error",
