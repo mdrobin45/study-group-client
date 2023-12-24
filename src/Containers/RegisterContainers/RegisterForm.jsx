@@ -31,11 +31,22 @@ const RegisterForm = () => {
                label="Password"
                name="password"
             />
-            <TextField
+
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+               Upload Profile Image
+            </label>
+            <input
+               onChange={onChangeHandler}
+               className="border border-gray-300 cursor-pointer p-2 rounded-lg w-full"
+               name="profileImage"
+               type="file"
+            />
+
+            {/* <TextField
                onChange={onChangeHandler}
                label="Photo URL"
                name="photoUrl"
-            />
+            /> */}
             <div className="inline-flex items-center pb-2">
                <label
                   className="relative flex items-center p-3 rounded-full cursor-pointer"

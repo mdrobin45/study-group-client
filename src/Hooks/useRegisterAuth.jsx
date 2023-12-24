@@ -12,15 +12,24 @@ const useRegisterAuth = () => {
    const [formData, setFormData] = useState({
       name: "",
       email: "",
-      photoUrl: "",
+      profileImage: "",
       password: "",
    });
 
    // Onchange handler
    const onChangeHandler = (e) => {
+      if (e.target.files) {
+         const imgInfo = e.target.files[0];
+         const formData = new FormData();
+         formData.append("profileImage", imgInfo, e.target.files[0].name);
+         console.log(formData);
+      }
+
       const { name, value } = e.target;
       setFormData((prevData) => ({ ...prevData, [name]: value }));
    };
+
+   console.log(formData);
 
    // Handle form submit
    const handleFormSubmit = (e) => {
