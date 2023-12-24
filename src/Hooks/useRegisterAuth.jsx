@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext, useState } from "react";
 import ReactGA from "react-ga";
 import { useNavigate } from "react-router-dom";
@@ -12,24 +13,20 @@ const useRegisterAuth = () => {
    const [formData, setFormData] = useState({
       name: "",
       email: "",
-      profileImage: "",
       password: "",
    });
 
    // Onchange handler
    const onChangeHandler = (e) => {
-      if (e.target.files) {
-         const imgInfo = e.target.files[0];
-         const formData = new FormData();
-         formData.append("profileImage", imgInfo, e.target.files[0].name);
-         console.log(formData);
-      }
-
       const { name, value } = e.target;
       setFormData((prevData) => ({ ...prevData, [name]: value }));
-   };
 
-   console.log(formData);
+      // Set image in state
+      if (e.target.files) {
+         const imgInfo = e.target.files[0];
+         setFormData((prevData) => ({ ...prevData, profileImage: imgInfo }));
+      }
+   };
 
    // Handle form submit
    const handleFormSubmit = (e) => {
@@ -92,7 +89,20 @@ const useRegisterAuth = () => {
                isLoading: false,
             });
             setErrorMessage(err.message);
+            return;
          });
+
+      // Upload profile photo
+      const imageData = new FormData();
+      imageData.append("profilePhoto", formData.profileImage);
+
+      axios
+         .post(`${import.meta.env.VITE_SERVER_API}/upload`, imageData, {
+            headers: {
+               "Content-Type": "multipart/form-data",
+            },
+         })
+         .then((res) => console.log(res));
    };
    return { onChangeHandler, handleFormSubmit, errorMessage };
 };
