@@ -2,6 +2,7 @@ import About from "../../Containers/HomeContainers/About/About";
 import Banner from "../../Containers/HomeContainers/Banner/Banner";
 import FeatureCards from "../../Containers/HomeContainers/FeatureCards/FeatureCards";
 import LatesAssignment from "../../Containers/HomeContainers/LatesAssignment/LatesAssignment";
+import NumberOfStudents from "../../Containers/HomeContainers/NumberOfStudents/NumberOfStudents";
 
 const Home = () => {
    return (
@@ -11,6 +12,7 @@ const Home = () => {
             <FeatureCards />
             <About />
             <LatesAssignment />
+            <NumberOfStudents />
          </div>
       </div>
    );
