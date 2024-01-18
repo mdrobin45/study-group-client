@@ -52,7 +52,7 @@ const Footer = () => {
          <Typography
             color="blue-gray"
             className="text-center text-white font-normal">
-            &copy; 2023 Material Tailwind
+            &copy; 2024 StudyHut
          </Typography>
       </footer>
    );
