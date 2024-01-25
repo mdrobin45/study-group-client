@@ -1,0 +1,50 @@
+[
+   {
+      "name": "John Doe",
+      "photo": "https://i.ibb.co/Ycn2HKV/1.webp",
+      "position": "Senior Software Engineer",
+      "description": "Experienced software engineer specializing in front-end development and UI/UX design."
+   },
+   {
+      "name": "Jane Smith",
+      "photo": "https://i.ibb.co/fvSL8hc/8.webp",
+      "position": "Data Scientist",
+      "description": "Data science expert with a focus on machine learning and statistical analysis."
+   },
+   {
+      "name": "Alex Johnson",
+      "photo": "https://i.ibb.co/gVZxR13/7.webp",
+      "position": "Product Manager",
+      "description": "Innovative product manager skilled in leading cross-functional teams and product strategy."
+   },
+   {
+      "name": "Emily Davis",
+      "photo": "https://i.ibb.co/jwxWPtc/6.webp",
+      "position": "UX/UI Designer",
+      "description": "Creative designer passionate about creating intuitive and visually appealing user interfaces."
+   },
+   {
+      "name": "Michael Brown",
+      "photo": "https://i.ibb.co/8PMb9Kv/5.webp",
+      "position": "Cybersecurity Analyst",
+      "description": "Cybersecurity expert with a focus on threat analysis and network security."
+   },
+   {
+      "name": "Sara Wilson",
+      "photo": "https://i.ibb.co/HV5GpTn/4.webp",
+      "position": "Marketing Specialist",
+      "description": "Experienced marketing professional with expertise in digital marketing and brand strategy."
+   },
+   {
+      "name": "Chris Miller",
+      "photo": "https://i.ibb.co/185PNLy/3.webp",
+      "position": "Full Stack Developer",
+      "description": "Versatile full-stack developer proficient in both front-end and back-end technologies."
+   },
+   {
+      "name": "Laura Turner",
+      "photo": "https://i.ibb.co/C8kw5Y8/2.webp",
+      "position": "AI Researcher",
+      "description": "AI researcher focusing on natural language processing and machine learning algorithms."
+   }
+]
