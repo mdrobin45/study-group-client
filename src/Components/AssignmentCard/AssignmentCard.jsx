@@ -3,7 +3,6 @@ import {
    Card,
    CardBody,
    CardFooter,
-   CardHeader,
    Chip,
    Typography,
 } from "@material-tailwind/react";
@@ -37,11 +36,20 @@ const AssignmentCard = ({ assignmentData }) => {
             hidden: { opacity: 0, x: 0, y: 40 },
             visible: { opacity: 1, x: 0, y: 0 },
          }}>
-         <Card className="md:w-86 lg:w-96 border pt-4">
-            <CardHeader color="blue-gray" className="relative h-56 mt-0">
-               <img className="h-full mt-0" src={thumbnail} alt="Thumbnail" />
-            </CardHeader>
-            <CardBody>
+         <Card className="md:w-86 lg:w-96 border p-4">
+            {/* <CardHeader color="blue-gray" className="relative h-56 mt-0">
+               
+            </CardHeader> */}
+            <div
+               className="w-full rounded-md h-60 rounded-t-md"
+               style={{
+                  backgroundImage: `url(${thumbnail})`,
+                  backgroundPosition: "center center",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+               }}></div>
+            {/* <img className="h-full mt-0" src={thumbnail} alt="Thumbnail" /> */}
+            <CardBody className="px-0">
                <Typography variant="h5" color="blue-gray" className="mb-2">
                   {title}
                </Typography>
@@ -79,7 +87,7 @@ const AssignmentCard = ({ assignmentData }) => {
                   </span>
                </div>
             </CardBody>
-            <CardFooter className="pt-0 justify-between flex flex-col lg:flex-row">
+            <CardFooter className="pt-0 px-0 justify-between flex flex-col lg:flex-row">
                {pathname === "/posted-assignment" ? (
                   <Button
                      onClick={() => {
