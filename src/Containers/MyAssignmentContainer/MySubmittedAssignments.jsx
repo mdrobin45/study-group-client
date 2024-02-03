@@ -1,5 +1,6 @@
 import { ClipLoader } from "react-spinners";
 import SubmittedCard from "../../Components/AssignmentCard/SubmittedCard";
+import Container from "../../Components/Container/Container";
 import EmptyPage from "../../Components/EmptyPage/EmptyPage";
 import useUserSubmittedAssignment from "../../Hooks/useUserSubmittedAssignment";
 
@@ -7,7 +8,7 @@ const MySubmittedAssignments = () => {
    const { isPending, mySubmittedAssignments } = useUserSubmittedAssignment();
 
    return (
-      <>
+      <Container>
          {!isPending ? (
             <>
                {mySubmittedAssignments.length ? (
@@ -34,7 +35,7 @@ const MySubmittedAssignments = () => {
                </div>
             </>
          )}
-      </>
+      </Container>
    );
 };
 

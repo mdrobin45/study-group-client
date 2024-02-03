@@ -2,6 +2,7 @@ import { Option, Select } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { ClipLoader } from "react-spinners";
 import AssignmentCard from "../../Components/AssignmentCard/AssignmentCard";
+import Container from "../../Components/Container/Container";
 import Pagination from "../../Components/Pagination/Pagination";
 import useAssignments from "../../Hooks/useAssignments";
 
@@ -44,7 +45,7 @@ const AssignmentArchive = () => {
    }, [isPending]);
 
    return (
-      <>
+      <Container>
          <div className="mt-20 mb-10 flex flex-col items-end">
             <div className="w-72">
                <Select onChange={handleFilter} label="Filter by">
@@ -78,7 +79,7 @@ const AssignmentArchive = () => {
                <ClipLoader color="#1eaace" />
             </div>
          )}
-      </>
+      </Container>
    );
 };
 
